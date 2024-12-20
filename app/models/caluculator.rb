@@ -1,8 +1,9 @@
 class Caluculator < ApplicationRecord
-	def self.sum(str)
+	def self.add(str)
 		return 0 if str.length < 0
 		sum = 0
-		numbers = str.split(",")
+		numbers = str.gsub("\n", ',')
+		numbers = numbers.split(",")
 		numbers.each do |num|
 			sum += num.to_i
 		end
@@ -10,4 +11,4 @@ class Caluculator < ApplicationRecord
 	end
 end
 
-Caluculator.sum("1, 2")
+Caluculator.sum("1,\n2,2")
