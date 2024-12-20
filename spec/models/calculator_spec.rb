@@ -1,4 +1,4 @@
-require 'rspec'
+require 'rails_helper'
 
 RSpec.describe Calculator do
   describe '.add' do

@@ -3,8 +3,8 @@ class Calculator < ApplicationRecord
 		return 0 if str.empty?
 
 		if str.start_with?('//')
-			delimiter, numbers_part = str.split("\n", 2)
-    	numbers = numbers_part.split(';').map(&:to_i)
+    	delimiter, numbers_part = str[2..].split("\n", 2)
+    	numbers = numbers_part.split(Regexp.new(Regexp.escape(delimiter))).map(&:to_i)
   	else
     	numbers = str.split(/,|\n/).map(&:to_i)
   	end
