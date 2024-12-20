@@ -26,5 +26,15 @@ Rspec.describe Calucultor do
         expect(Calculator.add("//|\n4|5|6")).to eq(15)
       end
     end
+
+    context 'when input contains negative numbers' do
+    	it 'raises an exception for a single negative number' do
+        expect { Calculator.add("-1") }.to raise_error("negative numbers not allowed -1")
+      end
+
+      it 'raises an exception with the negative numbers listed' do
+        expect { Calculator.add("1,-2,3,-4") }.to raise_error("negative numbers not allowed -2, -4")
+      end
+    end
 	end
 end
