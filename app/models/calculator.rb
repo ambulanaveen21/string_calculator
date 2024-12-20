@@ -1,4 +1,4 @@
-class Caluculator < ApplicationRecord
+class Calculator < ApplicationRecord
 	def self.add(str)
 		return 0 if str.empty?
 
