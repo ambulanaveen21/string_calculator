@@ -19,5 +19,12 @@ Rspec.describe Calucultor do
 				expect(Calucultor.add("1\n9,8")).to eq(18)
 			end
 		end
+
+		context 'when a custom delimiter is included' do
+      it 'removes the custom delimiter to calculate the sum' do
+        expect(Calculator.add("//;\n1;2;3")).to eq(6)
+        expect(Calculator.add("//|\n4|5|6")).to eq(15)
+      end
+    end
 	end
 end

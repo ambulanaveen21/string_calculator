@@ -1,14 +1,14 @@
 class Caluculator < ApplicationRecord
 	def self.add(str)
-		return 0 if str.length < 0
-		sum = 0
-		numbers = str.gsub("\n", ',')
-		numbers = numbers.split(",")
-		numbers.each do |num|
-			sum += num.to_i
-		end
-		sum
+		return 0 if str.empty?
+
+		if str.start_with?('//')
+			delimiter, numbers_part = str.split("\n", 2)
+    	numbers = numbers_part.split(';')
+  	else
+    	numbers = str.split(/,|\n/)
+  	end
+
+  	numbers.map(&:to_i).sum
 	end
 end
-
-Caluculator.sum("1,\n2,2")
